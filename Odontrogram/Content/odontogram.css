@@ -1,0 +1,45 @@
+﻿.teeth {
+    width: 25px;
+    height: 25px;
+    float: left;
+    border: 1px solid black;
+    margin: 0px 5px;
+}
+
+.teeth .teethLeft,.teeth .teethUpper,.teeth .teethBottom,.teeth .teethCenter,.teeth .teethRight {
+    float: left;
+}
+
+.teeth .teethLeft {
+    background-color: yellow;
+    width: 5px;
+    height: 15px;
+}
+
+.teeth .teethUpper {
+    background-color: blue;
+    width: 25px;
+    height: 5px;
+}
+
+.teeth .teethBottom {
+    background-color: violet;
+    width: 25px;
+    height: 5px;
+}
+
+.teeth .teethCenter {
+    background-color: green;
+    width: 15px;
+    height: 15px;
+}
+
+.teeth .teethRight {
+    background-color: red;
+    width: 5px;
+    height: 15px;
+}
+
+.clear {
+    clear:both;
+}
