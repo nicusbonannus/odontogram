@@ -1,8 +1,31 @@
-﻿.teeth {
+﻿#odontogram {
+    width: 600px;
+}
+.section {
+    float:left;
+    margin: 10px;
+    width: 280px;
+}
+
+.teethContainer{
+    float:left;
+    width: 35px;
+
+}
+
+.teeth {
     width: 25px;
     height: 25px;
     float: left;
     border: 1px solid black;
+    margin: 0px 5px;
+    clear:both;
+}
+
+.section span {
+    text-align: center;   
+    width: 25px;
+    display:block;
     margin: 0px 5px;
 }
 
@@ -11,31 +34,31 @@
 }
 
 .teeth .teethLeft {
-    background-color: yellow;
+    /*background-color: yellow;*/
     width: 5px;
     height: 15px;
 }
 
 .teeth .teethUpper {
-    background-color: blue;
+    /*background-color: blue;*/
     width: 25px;
     height: 5px;
 }
 
 .teeth .teethBottom {
-    background-color: violet;
+    /*background-color: violet;*/
     width: 25px;
     height: 5px;
 }
 
 .teeth .teethCenter {
-    background-color: green;
+    /*background-color: green;*/
     width: 15px;
     height: 15px;
 }
 
 .teeth .teethRight {
-    background-color: red;
+    /*background-color: red;*/
     width: 5px;
     height: 15px;
 }
