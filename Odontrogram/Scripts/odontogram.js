@@ -11,10 +11,12 @@ function Odontogram(layerId, teeths) {
         $.each(this.Teeths, function (section, teehtsInSection) {
             var divContainer = $("<div>", { id: section, class: "section" });
             
+            var sectionNumber = parseInt(section.substring(1, 2));
+
             $.each(teehtsInSection, function (teethNumber, teethCode) {
                 //Teeth Number
                 var spanTeethNumber = $("<span>", {});
-                spanTeethNumber.html(teethNumber);
+                spanTeethNumber.html(sectionNumber * 10 + parseInt(teethNumber));
 
                 var teethContainer = $("<div>", { class: "teethContainer" });
                 var teethDiv = $("<div>", { id: teethNumber, class: "teeth" });
@@ -34,13 +36,14 @@ function Odontogram(layerId, teeths) {
 
 
                 teethDiv.css('background-image', 'url(../Content/Images/' + teethCode + '.png)');
-                if (section == 1 || section == 2)
+                if ($.inArray(sectionNumber, [1, 2, 5, 6]) != -1) {
                     teethContainer.append(spanTeethNumber);
-
+                }
                 teethContainer.append(teethDiv);
 
-                if (section == 3 || section == 4)
+                if ($.inArray(sectionNumber, [3, 4, 7, 8]) != -1) {
                     teethContainer.append(spanTeethNumber);
+                }
 
 
                 divContainer.append(teethContainer);
@@ -98,6 +101,10 @@ $(document).ready(function () {
         'S2': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
         'S3': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
         'S4': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
+        'S5': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA"},
+        'S6': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA"},
+        'S7': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA"},
+        'S8': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA"},
     };
 
     odontogramBox = new Odontogram("odontogram",teeths);

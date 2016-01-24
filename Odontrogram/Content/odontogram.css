@@ -7,6 +7,11 @@
     width: 280px;
 }
 
+#S3, #S7
+{
+    float: right !important;
+}
+
 .teethContainer{
     float:left;
     width: 35px;
@@ -22,6 +27,11 @@
     clear:both;
 }
 
+#S1 .teethContainer,#S3 .teethContainer,#S5 .teethContainer,#S8 .teethContainer
+{
+    float: right;
+}
+
 .section span {
     text-align: center;   
     width: 25px;
@@ -34,31 +44,26 @@
 }
 
 .teeth .teethLeft {
-    /*background-color: yellow;*/
     width: 5px;
     height: 15px;
 }
 
 .teeth .teethUpper {
-    /*background-color: blue;*/
     width: 25px;
     height: 5px;
 }
 
 .teeth .teethBottom {
-    /*background-color: violet;*/
     width: 25px;
     height: 5px;
 }
 
 .teeth .teethCenter {
-    /*background-color: green;*/
     width: 15px;
     height: 15px;
 }
 
 .teeth .teethRight {
-    /*background-color: red;*/
     width: 5px;
     height: 15px;
 }
