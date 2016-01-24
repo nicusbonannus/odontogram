@@ -1,4 +1,3 @@
-C:\Develop\Odontrogram\Odontrogram\bin\Odontrogram.dll.config
 C:\Develop\Odontrogram\Odontrogram\bin\Odontrogram.dll
 C:\Develop\Odontrogram\Odontrogram\bin\Odontrogram.pdb
 C:\Develop\Odontrogram\Odontrogram\bin\Antlr3.Runtime.dll

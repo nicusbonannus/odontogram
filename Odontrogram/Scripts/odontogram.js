@@ -8,10 +8,10 @@ function Odontogram(layerId, teeths) {
     this.Initialize = function () {
         this.Layer = $("#" + layerId);
         var that = this;
-        $.each(this.OdontrogramSections, function (index, section) {
-            var divContainer = $("<div>", { id: "Section"+index, class: "section" });
+        $.each(this.Teeths, function (section, teehtsInSection) {
+            var divContainer = $("<div>", { id: section, class: "section" });
             
-            $.each(that.Teeths, function (teethNumber, teethCode) {
+            $.each(teehtsInSection, function (teethNumber, teethCode) {
                 //Teeth Number
                 var spanTeethNumber = $("<span>", {});
                 spanTeethNumber.html(teethNumber);
@@ -50,30 +50,54 @@ function Odontogram(layerId, teeths) {
 
     }
 
-    this.SetOperation = function (action, section, teethNumber) {
-        this.Teeths[teethNumber] = this.GetCode(action,section,teethNumber);
-        $("#" + teethNumber).css('background-image', 'url(../Content/Images/' + this.Teeths[teethNumber] + '.png)');
+    this.SetOperation = function (action, section, teethNumber,teethArea) {
+        this.Teeths[teethArea][teethNumber] = this.GetCode(action,section,teethNumber,teethArea);
+        $("#" + teethArea+" #" + teethNumber).css('background-image', 'url(../Content/Images/' + this.Teeths[teethArea][teethNumber] + '.png)');
     },
 
-    this.GetCode = function (action, section, teethNumber) {
-        var teethCode = this.Teeths[teethNumber];
+    this.GetCode = function (action, section, teethNumber, teethArea) {
+        var teethCode = this.Teeths[teethArea][teethNumber];
+        if (this.IsWholeTeethCode(teethCode)) {
+            teethCode = 'AAAAA';
+        }
         if (action == 'prequired') {
             return this.ReplaceLetter(this.TeethSection[section], "C", teethCode);
         } else if(action == 'pdone') {
             return this.ReplaceLetter(this.TeethSection[section], "B", teethCode);
+        } else if (action == 'premovable') {
+            return 'FFFFF';
+        } else if (action == 'crown') {
+            return 'GGGGG';
+        }else if (action == 'pfixed') {
+            return 'EEEEE';
+        } else if (action == 'eRequired') {
+            return 'HHHHH';
+        } else if (action == 'tAusent') {
+            return 'DDDDD';
+        } else if (action == 'cSector') {
+            return this.ReplaceLetter(this.TeethSection[section], "A", teethCode);
+        } else {
+            return 'AAAAA';
         }
+    },
 
-        return 'AAAAA';
+    this.IsWholeTeethCode = function (code) {
+        return (code == 'GGGGG' || code == 'FFFFF' || code == 'HHHH' || code == 'DDDDD' );
     },
     this.ReplaceLetter = function (index, character,code) {
         return code.substr(0, index) + character + code.substr(index + character.length);
+    },
+    this.GetToothStatus = function(){
+        return this.Teeths;
     }
 }
 
 $(document).ready(function () {
     var teeths = {
-        11: "AAAAA", 12: "ACCAA", 13: "ACCCA", 14: "AAAAA", 15: "AAAAA", 16: "CCCCC", 17: "ACACA", 18: "CCACC",
-        21: "AAAAA", 22: "ACCAA", 23: "ACCCA", 24: "AAAAA", 25: "AAAAA", 26: "CCCCC", 27: "ACACA", 28: "CCACC"
+        'S1': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
+        'S2': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
+        'S3': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
+        'S4': { 1: "AAAAA", 2: "ACCAA", 3: "ACCCA", 4: "AAAAA", 5: "AAAAA", 6: "CCCCC", 7: "ACACA", 8: "CCACC" },
     };
 
     odontogramBox = new Odontogram("odontogram",teeths);
@@ -83,7 +107,7 @@ $(document).ready(function () {
     $("#odontogram .teeth div").contextMenu({
         menu: 'myMenu'
     }, function (action, el, pos) {
-        odontogramBox.SetOperation(action, el.attr("id"), el.parent().attr("id"));
+        odontogramBox.SetOperation(action, el.attr("id"), el.parent().attr("id"), el.parent().parent().parent().attr("id"));
 
     });
 });
