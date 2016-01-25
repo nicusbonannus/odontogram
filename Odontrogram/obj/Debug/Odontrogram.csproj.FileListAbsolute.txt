@@ -52,3 +52,4 @@ C:\Develop\Odontrogram\Odontrogram\bin\Microsoft.Owin.Security.MicrosoftAccount.
 C:\Develop\Odontrogram\Odontrogram\obj\Debug\Odontrogram.csprojResolveAssemblyReference.cache
 C:\Develop\Odontrogram\Odontrogram\obj\Debug\Odontrogram.dll
 C:\Develop\Odontrogram\Odontrogram\obj\Debug\Odontrogram.pdb
+C:\Develop\Odontrogram\Odontrogram\bin\Odontrogram.dll.config
